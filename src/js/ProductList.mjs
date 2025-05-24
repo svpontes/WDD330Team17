@@ -1,7 +1,16 @@
 //Create a new file ProductList.mjs. This purpose of this script will be to generate a list of product cards in HTML from an array.
-function productCardTemplate(product) { 
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
+
+const dataSource = new ProductData("tents");
+const element = document.querySelector(".product-list");
+const productList = new ProductList("Tents", dataSource, element);
+
+productList.init();
+
+function productCardTemplate(product) {
    
-    return `<li class="product-card">
+  return `<li class="product-card">
     <a href="product_pages/?product=">
       <img src="" alt="Image of ">
       <h2 class="card__brand"></h2>
@@ -9,8 +18,8 @@ function productCardTemplate(product) {
       <p class="product-card__price">$</p>
     </a>
   </li>`
-    
 }
+
 
 export default class ProductList {
     constructor(category, dataSource, listElement) {
